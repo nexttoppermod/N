@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOPPER - Learn for Free</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 420px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 45px 35px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 6s infinite linear;
+        }
+        
+        @keyframes shine {
+            0% { transform: rotate(45deg) translateX(-100%); }
+            100% { transform: rotate(45deg) translateX(100%); }
+        }
+        
+        .logo {
+            width: 140px;
+            height: 140px;
+            border-radius: 30px;
+            margin: 0 auto 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid white;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        h1 {
+            color: #2d3748;
+            margin-bottom: 12px;
+            font-size: 2.5rem;
+            font-weight: 800;
+            position: relative;
+            z-index: 2;
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 10px rgba(255, 107, 107, 0.2);
+        }
+        
+        .tagline {
+            color: #718096;
+            margin-bottom: 35px;
+            line-height: 1.6;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .highlight {
+            background: linear-gradient(135deg, #48bb78, #38a169);
+            color: white;
+            padding: 20px;
+            border-radius: 18px;
+            margin: 25px 0;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(72, 187, 120, 0.3);
+            position: relative;
+            z-index: 2;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        
+        .free-badge {
+            background: #ff6b6b;
+            color: white;
+            padding: 6px 15px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-left: 10px;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+        }
+        
+        .install-btn {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
+            color: white;
+            border: none;
+            padding: 20px;
+            width: 100%;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 30px 0;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+            text-decoration: none;
+            display: block;
+            position: relative;
+            z-index: 2;
+            letter-spacing: 0.5px;
+        }
+        
+        .install-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.6);
+            background: linear-gradient(135deg, #ff5252 0%, #ff7b7b 100%);
+        }
+        
+        .install-btn:active {
+            transform: translateY(-2px);
+        }
+        
+        .features {
+            display: flex;
+            justify-content: space-around;
+            margin: 35px 0;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .feature {
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            color: white;
+            font-size: 1.4rem;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .feature-text {
+            font-size: 0.9rem;
+            color: #4a5568;
+            font-weight: 600;
+        }
+        
+        .note {
+            color: #718096;
+            font-size: 0.95rem;
+            margin-top: 25px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .visitor-counter {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 20px;
+            margin: 30px 0 0 0;
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.95rem;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .counter-number {
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin: 8px 0;
+            color: #ffd93d;
+            text-shadow: 0 2px 10px rgba(255, 217, 61, 0.3);
+        }
+        
+        .counter-label {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+        
+        .free-mention {
+            background: linear-gradient(135deg, #ffd93d, #ffb347);
+            color: #2d3748;
+            padding: 15px;
+            border-radius: 15px;
+            margin: 20px 0;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 25px rgba(255, 217, 61, 0.3);
+            position: relative;
+            z-index: 2;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        
+        .instagram-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        .modal-content {
+            background: linear-gradient(135deg, #fff, #f8f9fa);
+            padding: 40px;
+            border-radius: 25px;
+            text-align: center;
+            max-width: 380px;
+            width: 90%;
+            animation: popIn 0.4s ease;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        @keyframes popIn {
+            from {
+                transform: scale(0.8) translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .instagram-icon {
+            font-size: 3.5rem;
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+        
+        .follow-btn {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 25px 0;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(192, 53, 132, 0.4);
+        }
+        
+        .follow-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(192, 53, 132, 0.6);
+        }
+        
+        .skip-btn {
+            background: none;
+            border: none;
+            color: #718096;
+            cursor: pointer;
+            font-size: 0.95rem;
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+        
+        .skip-btn:hover {
+            color: #4a5568;
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo floating">
+            <img src="https://iili.io/f9o6vZG.md.jpg" alt="TOPPER Logo">
+        </div>
+        
+        <h1>TOPPER</h1>
+        <p class="tagline">Become a Topper with premium education - completely free!</p>
+        
+        <div class="highlight">
+            <strong>All Batches 100% FREE</strong>
+        </div>
+        
+        <div class="free-mention">
+            <i class="fas fa-crown"></i> All Courses & Batches - Absolutely FREE
+        </div>
+        
+        <a href="https://www.mediafire.com/file/85l636zzrt2yl38/👑TOPPER+👑.apk/file" class="install-btn" id="downloadBtn" target="_blank">
+            <i class="fas fa-download"></i> Download Now - FREE!
+        </a>
+        
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <div class="feature-text">50+ Courses <span class="free-badge">FREE</span></div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <div class="feature-text">Certificates <span class="free-badge">FREE</span></div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <div class="feature-text">Any Device</div>
+            </div>
+        </div>
+        
+        <div class="visitor-counter">
+            <div>
+                <div class="counter-number" id="visitorCount">0</div>
+                <div class="counter-label">Visitors on this page</div>
+            </div>
+        </div>
+        
+        <p class="note">Join thousands of successful learners today!</p>
+    </div>
+
+    <!-- Instagram Follow Modal -->
+    <div class="instagram-modal" id="instagramModal">
+        <div class="modal-content">
+            <div class="instagram-icon">
+                <i class="fab fa-instagram"></i>
+            </div>
+            <h2>Follow for Updates! 📱</h2>
+            <p>Get the latest course updates and learning tips</p>
+            
+            <a href="https://www.instagram.com/maurya__jiiiii__?igsh=MW5zeWkzODUwcHJpZA==" target="_blank" class="follow-btn">
+                <i class="fab fa-instagram"></i> Follow @maurya__jiiiii__
+            </a>
+            
+            <br>
+            <button class="skip-btn" id="skipBtn">Skip & Download</button>
+        </div>
+    </div>
+
+    <script>
+        let firstTime = true;
+        let visitorCount = 0;
+        const downloadBtn = document.getElementById('downloadBtn');
+        const instagramModal = document.getElementById('instagramModal');
+        const skipBtn = document.getElementById('skipBtn');
+        const visitorCountElement = document.getElementById('visitorCount');
+
+        // Function to update visitor count
+        function updateVisitorCount() {
+            visitorCount++;
+            visitorCountElement.textContent = visitorCount;
+            
+            // Add animation effect
+            visitorCountElement.style.transform = 'scale(1.4)';
+            setTimeout(() => {
+                visitorCountElement.style.transform = 'scale(1)';
+            }, 400);
+            
+            // Save to localStorage to persist count
+            localStorage.setItem('visitorCount', visitorCount);
+        }
+
+        // Load visitor count from localStorage
+        function loadVisitorCount() {
+            const savedCount = localStorage.getItem('visitorCount');
+            if (savedCount) {
+                visitorCount = parseInt(savedCount);
+            }
+            visitorCountElement.textContent = visitorCount;
+        }
+
+        // Initialize visitor count when page loads
+        window.addEventListener('load', function() {
+            loadVisitorCount();
+            updateVisitorCount(); // Count current visitor
+        });
+
+        downloadBtn.addEventListener('click', function(e) {
+            if (firstTime) {
+                e.preventDefault(); // Prevent immediate redirect
+                // Show Instagram follow modal for first time users
+                instagramModal.style.display = 'flex';
+                firstTime = false;
+            }
+            // If not first time, the link will open directly due to href
+        });
+
+        skipBtn.addEventListener('click', function() {
+            instagramModal.style.display = 'none';
+            // Directly open the MediaFire link
+            window.open('https://www.mediafire.com/file/85l636zzrt2yl38/👑TOPPER+👑.apk/file', '_blank');
+        });
+
+        // Close modal if clicked outside
+        instagramModal.addEventListener('click', function(e) {
+            if (e.target === instagramModal) {
+                instagramModal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
